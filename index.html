@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DevOps & Cloud Learning Hub - Daily Challenges & AI Mentor</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Floating Particles Background -->
+  <div id="particlesContainer" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">   
+      <div class="nav-brand">
+        <i class="fas fa-cloud"></i>
+        <span>DevOps Academy</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link active" data-page="home"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#challenges" class="nav-link" data-page="challenges"><i class="fas fa-tasks"></i> Challenges</a></li>
+        <li><a href="#interview" class="nav-link" data-page="interview"><i class="fas fa-comments"></i> Interviews</a></li>
+        <li><a href="#tools" class="nav-link" data-page="tools"><i class="fas fa-tools"></i> Tools</a></li>
+        <li><a href="#cloud" class="nav-link" data-page="cloud"><i class="fas fa-cloud"></i> Cloud</a></li>
+        <li><a href="#bookmarks" class="nav-link" data-page="bookmarks"><i class="fas fa-bookmark"></i> Bookmarks</a></li>
+        <li><a href="#progress" class="nav-link" data-page="progress"><i class="fas fa-chart-line"></i> Progress</a></li>
+        <li><a href="#settings" class="nav-link" data-page="settings"><i class="fas fa-cog"></i> Settings</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    
+    <!-- Home Page -->
+    <div id="home" class="page active">
+      <section class="hero-section">
+        <div class="hero-content">
+          <h1>🚀 Master DevOps & Cloud Architecture</h1>
+          <p>Learn industry-relevant topics with AI-powered guidance, track your progress, and prepare for placements</p>
+          <button class="btn btn-primary btn-large" onclick="goToPage('challenges')">
+            <i class="fas fa-play"></i> Start Learning Now
+          </button>
+        </div>
+      </section>
+
+      <section class="stats-section">
+        <div class="stat-card">
+          <h3><span id="totalSolved">0</span></h3>
+          <p>Challenges Solved</p>
+        </div>
+        <div class="stat-card">
+          <h3><span id="totalBookmarks">0</span></h3>
+          <p>Bookmarked</p>
+        </div>
+        <div class="stat-card">
+          <h3><span id="streakDays">0</span></h3>
+          <p>Day Streak</p>
+        </div>
+        <div class="stat-card">
+          <h3><span id="completionRate">0</span>%</h3>
+          <p>Completion Rate</p>
+        </div>
+      </section>
+
+      <section class="topics-overview">
+        <h2>📚 Topics We Cover</h2>
+        <div class="topics-grid">
+          <div class="topic-box" data-topic="docker">
+            <i class="fab fa-docker"></i>
+            <h3>Docker & Containerization</h3>
+            <p>Master container basics</p>
+          </div>
+          <div class="topic-box" data-topic="kubernetes">
+            <i class="fas fa-cube"></i>
+            <h3>Kubernetes & Orchestration</h3>
+            <p>Scale like a pro</p>
+          </div>
+          <div class="topic-box" data-topic="cicd">
+            <i class="fas fa-infinity"></i>
+            <h3>CI/CD Pipelines</h3>
+            <p>Automate everything</p>
+          </div>
+          <div class="topic-box" data-topic="aws">
+            <i class="fab fa-aws"></i>
+            <h3>AWS Cloud Services</h3>
+            <p>AWS fundamentals</p>
+          </div>
+          <div class="topic-box" data-topic="terraform">
+            <i class="fas fa-code"></i>
+            <h3>Infrastructure as Code</h3>
+            <p>Terraform & CloudFormation</p>
+          </div>
+          <div class="topic-box" data-topic="monitoring">
+            <i class="fas fa-heartbeat"></i>
+            <h3>Monitoring & Logging</h3>
+            <p>Observe your systems</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Challenges Page -->
+    <div id="challenges" class="page">
+      <div class="page-header">
+        <h1>📝 Daily Challenges</h1>
+        <p>Select a topic and solve challenges to master DevOps skills</p>
+      </div>
+
+      <div class="filter-section">
+        <h3>Filter by Topic:</h3>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All Topics</button>
+          <button class="filter-btn" data-filter="docker">Docker</button>
+          <button class="filter-btn" data-filter="kubernetes">Kubernetes</button>
+          <button class="filter-btn" data-filter="cicd">CI/CD</button>
+          <button class="filter-btn" data-filter="aws">AWS</button>
+          <button class="filter-btn" data-filter="terraform">IaC</button>
+          <button class="filter-btn" data-filter="monitoring">Monitoring</button>
+        </div>
+      </div>
+
+      <div class="challenge-container">
+        <div class="challenge-display">
+          <div id="challengeCard" class="challenge-card">
+            <div class="challenge-header">
+              <span id="topicBadge" class="topic-badge">Docker</span>
+              <button id="bookmarkBtn" class="btn btn-icon" title="Bookmark this question">
+                <i class="far fa-bookmark"></i>
+              </button>
+            </div>
+            <p id="challengeText" class="challenge-text">Click "Generate" to get started with your first challenge!</p>
+            
+            <div class="explanation-box">
+              <h4>💡 AI Explanation</h4>
+              <p id="explanationText" class="explanation-text">Generate a question to see the detailed explanation here.</p>
+            </div>
+          </div>
+
+          <div class="controls-section">
+            <button id="generateBtn" class="btn btn-primary btn-lg">
+              <i class="fas fa-sync-alt"></i> Generate Challenge
+            </button>
+            <button id="showHintBtn" class="btn btn-secondary btn-lg">
+              <i class="fas fa-lightbulb"></i> Show Hint
+            </button>
+          </div>
+
+          <div class="answer-section">
+            <h3>✍️ Write Your Answer</h3>
+            <textarea id="answerInput" class="answer-textarea" placeholder="Write your detailed answer here..."></textarea>
+            <div class="answer-controls">
+              <button id="saveAnswerBtn" class="btn btn-success">
+                <i class="fas fa-save"></i> Save Answer
+              </button>
+              <button id="clearAnswerBtn" class="btn btn-outline">
+                <i class="fas fa-trash"></i> Clear
+              </button>
+              <button id="markSolvedBtn" class="btn btn-primary">
+                <i class="fas fa-check-circle"></i> Mark as Solved
+              </button>
+            </div>
+            <p id="answerFeedback" class="feedback-message"></p>
+          </div>
+        </div>
+
+        <div class="sidebar-questions">
+          <h3>📋 Questions List</h3>
+          <div class="search-box">
+            <input type="text" id="questionSearch" placeholder="Search questions...">
+          </div>
+          <div id="questionsList" class="questions-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bookmarks Page -->
+    <div id="bookmarks" class="page">
+      <div class="page-header">
+        <h1>📌 Saved Questions & Answers</h1>
+        <p>Review your bookmarked questions and saved answers</p>
+      </div>
+
+      <div class="bookmarks-controls">
+        <input type="text" id="bookmarkSearch" placeholder="Search bookmarks..." class="search-input">
+        <button id="clearAllBookmarks" class="btn btn-outline">
+          <i class="fas fa-trash-alt"></i> Clear All
+        </button>
+      </div>
+
+      <div id="bookmarksList" class="bookmarks-list">
+        <p class="empty-message">No bookmarked questions yet. Start bookmarking to see them here!</p>
+      </div>
+    </div>
+
+    <!-- Progress Page -->
+    <div id="progress" class="page">
+      <div class="page-header">
+        <h1>📊 Your Learning Progress</h1>
+        <p>Track your learning journey and achievements</p>
+      </div>
+
+      <div class="progress-grid">
+        <div class="progress-item">
+          <h3>Overall Progress</h3>
+          <div class="progress-bar-wrapper">
+            <div id="overallProgress" class="progress-bar">
+              <div class="progress-fill"></div>
+            </div>
+            <span id="progressPercent">0%</span>
+          </div>
+        </div>
+
+        <div class="stats-detailed">
+          <div class="stat-item">
+            <h4>Total Challenges</h4>
+            <p id="totalChallenges">0</p>
+          </div>
+          <div class="stat-item">
+            <h4>Completed</h4>
+            <p id="completedCount">0</p>
+          </div>
+          <div class="stat-item">
+            <h4>In Progress</h4>
+            <p id="inProgressCount">0</p>
+          </div>
+          <div class="stat-item">
+            <h4>Current Streak</h4>
+            <p id="currentStreak">0 days</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="topics-progress">
+        <h3>Progress by Topic</h3>
+        <div id="topicProgressList" class="topic-progress-list">
+          <!-- Dynamically filled -->
+        </div>
+      </div>
+
+      <div class="activity-section">
+        <h3>📅 Recent Activity</h3>
+        <div id="activityList" class="activity-list">
+          <p class="empty-message">No activity yet. Start solving challenges!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings Page -->
+    <div id="settings" class="page">
+      <div class="page-header">
+        <h1>⚙️ Settings</h1>
+        <p>Customize your learning experience</p>
+      </div>
+
+      <div class="settings-grid">
+        <div class="settings-card">
+          <h3>📲 Export Data</h3>
+          <p>Download all your progress and saved answers as JSON</p>
+          <button id="exportDataBtn" class="btn btn-primary">
+            <i class="fas fa-download"></i> Export
+          </button>
+        </div>
+
+        <div class="settings-card">
+          <h3>💾 Import Data</h3>
+          <p>Load previously saved progress and answers</p>
+          <button id="importDataBtn" class="btn btn-primary">
+            <i class="fas fa-upload"></i> Import
+          </button>
+          <input type="file" id="importFile" accept=".json" style="display: none;">
+        </div>
+
+        <div class="settings-card">
+          <h3>🗑️ Clear All Data</h3>
+          <p>Reset everything and start fresh (cannot be undone)</p>
+          <button id="resetDataBtn" class="btn btn-danger">
+            <i class="fas fa-redo"></i> Reset All
+          </button>
+        </div>
+
+        <div class="settings-card">
+          <h3>🌙 Dark Mode</h3>
+          <p>Toggle between light and dark themes</p>
+          <div class="toggle-switch">
+            <input type="checkbox" id="darkModeToggle">
+            <label for="darkModeToggle"></label>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <h3>🔔 Notifications</h3>
+          <p>Get reminders for daily challenges</p>
+          <div class="toggle-switch">
+            <input type="checkbox" id="notificationsToggle">
+            <label for="notificationsToggle"></label>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <h3>ℹ️ About</h3>
+          <p>DevOps Academy v1.0 - Your ultimate learning companion</p>
+          <p style="font-size: 0.9em; color: #666;">Built to help students master DevOps and Cloud skills for placements</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interview Questions Page -->
+    <div id="interview" class="page">
+      <div class="page-header">
+        <h1>💼 Interview Questions</h1>
+        <p>Prepare for DevOps and Cloud interviews with curated questions</p>
+      </div>
+
+      <div class="filter-section">
+        <h3>Filter by Category:</h3>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="general">General</button>
+          <button class="filter-btn" data-filter="docker">Docker</button>
+          <button class="filter-btn" data-filter="kubernetes">Kubernetes</button>
+          <button class="filter-btn" data-filter="aws">AWS</button>
+          <button class="filter-btn" data-filter="devops">DevOps</button>
+        </div>
+      </div>
+
+      <div id="interviewContent" class="content-grid">
+        <!-- Interview cards populated by JavaScript -->
+      </div>
+    </div>
+
+    <!-- DevOps Tools Page -->
+    <div id="tools" class="page">
+      <div class="page-header">
+        <h1>🛠️ DevOps Tools & Technologies</h1>
+        <p>Explore essential DevOps tools and platforms</p>
+      </div>
+
+      <div class="filter-section">
+        <h3>Filter by Category:</h3>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="containerization">Containerization</button>
+          <button class="filter-btn" data-filter="orchestration">Orchestration</button>
+          <button class="filter-btn" data-filter="cicd">CI/CD</button>
+          <button class="filter-btn" data-filter="monitoring">Monitoring</button>
+          <button class="filter-btn" data-filter="infrastructure">Infrastructure</button>
+        </div>
+      </div>
+
+      <div id="toolsContent" class="content-grid">
+        <!-- Tools cards populated by JavaScript -->
+      </div>
+    </div>
+
+    <!-- Cloud Services Page -->
+    <div id="cloud" class="page">
+      <div class="page-header">
+        <h1>☁️ Cloud Services & Platforms</h1>
+        <p>Master cloud platforms and services</p>
+      </div>
+
+      <div class="filter-section">
+        <h3>Filter by Provider:</h3>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="aws">AWS</button>
+          <button class="filter-btn" data-filter="azure">Azure</button>
+          <button class="filter-btn" data-filter="gcp">GCP</button>
+          <button class="filter-btn" data-filter="multicloud">Multi-Cloud</button>
+        </div>
+      </div>
+
+      <div id="cloudContent" class="content-grid">
+        <!-- Cloud services cards populated by JavaScript -->
+      </div>
+    </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 DevOps Academy | Master Cloud & DevOps | Built for Placements</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
