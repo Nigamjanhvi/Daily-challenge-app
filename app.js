@@ -1,4 +1,8 @@
 // ==================== Celebration & Animation Effects ====================
+// Handles page navigation logic
+// Manages daily challenge generation
+// Stores user progress in local storage
+
 function createConfetti() {
   const colors = ['#2563EB', '#38BDF8', '#0F172A', '#475569', '#E2E8F0'];
   const confetti = document.createElement('div');
