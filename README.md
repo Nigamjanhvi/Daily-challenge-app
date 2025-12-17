@@ -1,4 +1,4 @@
-# 🚀 DevOps Academy - Clean & Scalable Content Structure
+
 
 ## 📚 Project Overview
 
