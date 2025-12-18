@@ -365,7 +365,15 @@ const challengesDatabase = {
       question: 'Explain blue-green deployment and canary deployment strategies',
       explanation: 'Blue-Green: run two identical environments (blue=current, green=new). Switch traffic after testing. Instant rollback. Zero downtime. Canary: gradually shift traffic to new version. Monitor metrics. If issues, traffic stays on old version. Reduces risk of full rollout.',
       hint: 'Blue-Green=instant switch, Canary=gradual rollout'
-    }
+    },
+    {
+      id: 16,
+      topic: 'cicd',
+      question: 'Explain the difference between CI and CD',
+      explanation: 'CI (Continuous Integration) focuses on frequently integrating code changes and running automated tests. CD (Continuous Deployment/Delivery) focuses on automatically releasing tested code to production or staging environments.',
+      hint: 'CI = build and test automation, CD = deployment automation'
+}
+
   ],
   aws: [
     {
@@ -454,6 +462,7 @@ const challengesDatabase = {
       topic: 'monitoring',
       question: 'Explain metrics, logs, and traces - the three pillars of observability',
       explanation: 'Metrics: quantitative measurements (CPU%, response time). Logs: text records of events. Traces: request flow across services. Together provide observability: understand system behavior. Tools: Prometheus (metrics), ELK Stack (logs), Jaeger (traces). Essential for microservices.',
+
       hint: 'Metrics=numbers, Logs=text, Traces=flow'
     },
     {
